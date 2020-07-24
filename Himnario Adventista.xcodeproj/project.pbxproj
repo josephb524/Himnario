@@ -9,21 +9,41 @@
 /* Begin PBXBuildFile section */
 		BB0411BD246B459A00B81F06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0411BC246B459A00B81F06 /* AppDelegate.swift */; };
 		BB0411BF246B459A00B81F06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0411BE246B459A00B81F06 /* SceneDelegate.swift */; };
-		BB0411C1246B459A00B81F06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0411C0246B459A00B81F06 /* ViewController.swift */; };
 		BB0411C4246B459A00B81F06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0411C2246B459A00B81F06 /* Main.storyboard */; };
 		BB0411C6246B459F00B81F06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB0411C5246B459F00B81F06 /* Assets.xcassets */; };
 		BB0411C9246B459F00B81F06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB0411C7246B459F00B81F06 /* LaunchScreen.storyboard */; };
+		BB0411D4246B461700B81F06 /* HimnarioNuevoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0411D3246B461700B81F06 /* HimnarioNuevoViewController.swift */; };
+		BB0411D6246B466800B81F06 /* Himnos.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0411D5246B466800B81F06 /* Himnos.swift */; };
+		BB0411DA246B762700B81F06 /* CoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0411D9246B762700B81F06 /* CoritosViewController.swift */; };
+		BB171F0524A11D2700D9F729 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB171F0424A11D2700D9F729 /* Default-568h@2x.png */; };
+		BB6535CD2472FD82005B287E /* SearchBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6535CC2472FD82005B287E /* SearchBrain.swift */; };
+		BBC57D3324981887004A513E /* HimnarioViejoBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC57D3224981887004A513E /* HimnarioViejoBrain.swift */; };
+		BBC57D3524982E75004A513E /* HimnarioNuevoBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC57D3424982E75004A513E /* HimnarioNuevoBrain.swift */; };
+		BBC57D3724985CE5004A513E /* HimnarioAntiguoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC57D3624985CE5004A513E /* HimnarioAntiguoViewController.swift */; };
+		BBF5AB96247C937A00866BEB /* SliderFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5AB95247C937A00866BEB /* SliderFont.swift */; };
+		BBF5AB98247DAACF00866BEB /* FavoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5AB97247DAACF00866BEB /* FavoritosViewController.swift */; };
+		BBF5AB9E248EB6A900866BEB /* ContactanosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5AB9D248EB6A900866BEB /* ContactanosViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		BB0411B9246B459A00B81F06 /* Coritos Adventistas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Coritos Adventistas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB0411B9246B459A00B81F06 /* Himnario Adventista.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Himnario Adventista.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB0411BC246B459A00B81F06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BB0411BE246B459A00B81F06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BB0411C0246B459A00B81F06 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BB0411C3246B459A00B81F06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BB0411C5246B459F00B81F06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BB0411C8246B459F00B81F06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB0411CA246B459F00B81F06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB0411D3246B461700B81F06 /* HimnarioNuevoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HimnarioNuevoViewController.swift; sourceTree = "<group>"; };
+		BB0411D5246B466800B81F06 /* Himnos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Himnos.swift; sourceTree = "<group>"; };
+		BB0411D9246B762700B81F06 /* CoritosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoritosViewController.swift; sourceTree = "<group>"; };
+		BB171F0424A11D2700D9F729 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		BB6535CC2472FD82005B287E /* SearchBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrain.swift; sourceTree = "<group>"; };
+		BBC57D3224981887004A513E /* HimnarioViejoBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HimnarioViejoBrain.swift; sourceTree = "<group>"; };
+		BBC57D3424982E75004A513E /* HimnarioNuevoBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HimnarioNuevoBrain.swift; sourceTree = "<group>"; };
+		BBC57D3624985CE5004A513E /* HimnarioAntiguoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HimnarioAntiguoViewController.swift; sourceTree = "<group>"; };
+		BBF5AB95247C937A00866BEB /* SliderFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderFont.swift; sourceTree = "<group>"; };
+		BBF5AB97247DAACF00866BEB /* FavoritosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosViewController.swift; sourceTree = "<group>"; };
+		BBF5AB9D248EB6A900866BEB /* ContactanosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactanosViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +60,7 @@
 		BB0411B0246B459A00B81F06 = {
 			isa = PBXGroup;
 			children = (
+				BB171F0424A11D2700D9F729 /* Default-568h@2x.png */,
 				BB0411BB246B459A00B81F06 /* Coritos Adventistas */,
 				BB0411BA246B459A00B81F06 /* Products */,
 			);
@@ -48,7 +69,7 @@
 		BB0411BA246B459A00B81F06 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BB0411B9246B459A00B81F06 /* Coritos Adventistas.app */,
+				BB0411B9246B459A00B81F06 /* Himnario Adventista.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,10 +77,11 @@
 		BB0411BB246B459A00B81F06 /* Coritos Adventistas */ = {
 			isa = PBXGroup;
 			children = (
+				BB0411D2246B45D000B81F06 /* Model */,
+				BB0411D1246B45C700B81F06 /* View */,
+				BB0411D0246B45B600B81F06 /* Controller */,
 				BB0411BC246B459A00B81F06 /* AppDelegate.swift */,
 				BB0411BE246B459A00B81F06 /* SceneDelegate.swift */,
-				BB0411C0246B459A00B81F06 /* ViewController.swift */,
-				BB0411C2246B459A00B81F06 /* Main.storyboard */,
 				BB0411C5246B459F00B81F06 /* Assets.xcassets */,
 				BB0411C7246B459F00B81F06 /* LaunchScreen.storyboard */,
 				BB0411CA246B459F00B81F06 /* Info.plist */,
@@ -67,12 +89,44 @@
 			path = "Coritos Adventistas";
 			sourceTree = "<group>";
 		};
+		BB0411D0246B45B600B81F06 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB0411D3246B461700B81F06 /* HimnarioNuevoViewController.swift */,
+				BBC57D3624985CE5004A513E /* HimnarioAntiguoViewController.swift */,
+				BB0411D9246B762700B81F06 /* CoritosViewController.swift */,
+				BBF5AB97247DAACF00866BEB /* FavoritosViewController.swift */,
+				BBF5AB9D248EB6A900866BEB /* ContactanosViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		BB0411D1246B45C700B81F06 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BB0411C2246B459A00B81F06 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		BB0411D2246B45D000B81F06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BB0411D5246B466800B81F06 /* Himnos.swift */,
+				BBC57D3224981887004A513E /* HimnarioViejoBrain.swift */,
+				BB6535CC2472FD82005B287E /* SearchBrain.swift */,
+				BBF5AB95247C937A00866BEB /* SliderFont.swift */,
+				BBC57D3424982E75004A513E /* HimnarioNuevoBrain.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BB0411B8246B459A00B81F06 /* Coritos Adventistas */ = {
+		BB0411B8246B459A00B81F06 /* Himnario Adventista */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB0411CD246B459F00B81F06 /* Build configuration list for PBXNativeTarget "Coritos Adventistas" */;
+			buildConfigurationList = BB0411CD246B459F00B81F06 /* Build configuration list for PBXNativeTarget "Himnario Adventista" */;
 			buildPhases = (
 				BB0411B5246B459A00B81F06 /* Sources */,
 				BB0411B6246B459A00B81F06 /* Frameworks */,
@@ -82,9 +136,9 @@
 			);
 			dependencies = (
 			);
-			name = "Coritos Adventistas";
+			name = "Himnario Adventista";
 			productName = "Coritos Adventistas";
-			productReference = BB0411B9246B459A00B81F06 /* Coritos Adventistas.app */;
+			productReference = BB0411B9246B459A00B81F06 /* Himnario Adventista.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +156,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BB0411B4246B459A00B81F06 /* Build configuration list for PBXProject "Coritos Adventistas" */;
+			buildConfigurationList = BB0411B4246B459A00B81F06 /* Build configuration list for PBXProject "Himnario Adventista" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +169,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BB0411B8246B459A00B81F06 /* Coritos Adventistas */,
+				BB0411B8246B459A00B81F06 /* Himnario Adventista */,
 			);
 		};
 /* End PBXProject section */
@@ -126,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB0411C9246B459F00B81F06 /* LaunchScreen.storyboard in Resources */,
+				BB171F0524A11D2700D9F729 /* Default-568h@2x.png in Resources */,
 				BB0411C6246B459F00B81F06 /* Assets.xcassets in Resources */,
 				BB0411C4246B459A00B81F06 /* Main.storyboard in Resources */,
 			);
@@ -138,9 +193,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BB0411C1246B459A00B81F06 /* ViewController.swift in Sources */,
 				BB0411BD246B459A00B81F06 /* AppDelegate.swift in Sources */,
+				BBC57D3324981887004A513E /* HimnarioViejoBrain.swift in Sources */,
+				BB0411DA246B762700B81F06 /* CoritosViewController.swift in Sources */,
+				BBC57D3724985CE5004A513E /* HimnarioAntiguoViewController.swift in Sources */,
+				BB0411D4246B461700B81F06 /* HimnarioNuevoViewController.swift in Sources */,
 				BB0411BF246B459A00B81F06 /* SceneDelegate.swift in Sources */,
+				BBF5AB96247C937A00866BEB /* SliderFont.swift in Sources */,
+				BBC57D3524982E75004A513E /* HimnarioNuevoBrain.swift in Sources */,
+				BB6535CD2472FD82005B287E /* SearchBrain.swift in Sources */,
+				BB0411D6246B466800B81F06 /* Himnos.swift in Sources */,
+				BBF5AB9E248EB6A900866BEB /* ContactanosViewController.swift in Sources */,
+				BBF5AB98247DAACF00866BEB /* FavoritosViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,14 +348,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 57R4ZFVKDM;
 				INFOPLIST_FILE = "Coritos Adventistas/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.JosePimentel.Coritos-Adventistas";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JosePimentel.HimnarioViejoYNuevo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -301,14 +368,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 57R4ZFVKDM;
 				INFOPLIST_FILE = "Coritos Adventistas/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.JosePimentel.Coritos-Adventistas";
+				PRODUCT_BUNDLE_IDENTIFIER = com.JosePimentel.HimnarioViejoYNuevo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -317,7 +387,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BB0411B4246B459A00B81F06 /* Build configuration list for PBXProject "Coritos Adventistas" */ = {
+		BB0411B4246B459A00B81F06 /* Build configuration list for PBXProject "Himnario Adventista" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB0411CB246B459F00B81F06 /* Debug */,
@@ -326,7 +396,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB0411CD246B459F00B81F06 /* Build configuration list for PBXNativeTarget "Coritos Adventistas" */ = {
+		BB0411CD246B459F00B81F06 /* Build configuration list for PBXNativeTarget "Himnario Adventista" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB0411CE246B459F00B81F06 /* Debug */,

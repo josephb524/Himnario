@@ -1,0 +1,253 @@
+//
+//  CoritosViewController.swift
+//  Coritos Adventistas
+//
+//  Created by Jose Pimentel on 5/12/20.
+//  Copyright © 2020 Jose Pimentel. All rights reserved.
+//
+
+import UIKit
+import AVFoundation
+
+class CoritosViewController: UIViewController {
+
+    @IBOutlet weak var coritoTitle: UINavigationItem!
+    @IBOutlet weak var fontView: UIView!
+    @IBOutlet weak var fontSlider: UISlider!
+    @IBOutlet weak var textDisplay: UITextView!
+    @IBOutlet weak var fontLabel: UILabel!
+    @IBOutlet weak var reproducirItem: UITabBarItem!
+    @IBOutlet weak var tabBar: UITabBar!
+    @IBOutlet weak var favoritoBtn: UITabBarItem!
+    
+    var coritos = HimnarioNuevoBrain()
+    var coritosViejos = HimnarioViejoBrain()
+    var indexCorito = 1
+    var slider = SliderFont()
+    
+    var favoritosDictionary: [String : [Int]] = [:]
+    var coritosDisplay = [Himnos]()
+    
+    var coritoFavorito: String = ""
+    var highlight: UIColor = #colorLiteral(red: 0.09795290977, green: 0.2151759565, blue: 0.3877361715, alpha: 1)
+    var favoritoTitle: String = ""
+    var audioPlayer: AVPlayer?
+    
+    var coritoRate: Float = 0.0
+    
+    let defaults = UserDefaults.standard
+    
+    func getCoritoIndex(index: Int, favoritos: [Himnos], checkWhichController: String) {
+        
+        indexCorito = index
+        coritosDisplay = favoritos
+        coritoFavorito = checkWhichController
+    }
+    
+    func loadCorito() {
+        
+        textDisplay.text = coritosDisplay[indexCorito].himnos
+        coritoTitle.title = "#" + coritosDisplay[indexCorito].title
+        
+        favoritosDictionary = defaults.dictionary(forKey: "Favoritos") as? [String : [Int]] ?? ["Nuevo" : [], "Viejo" : []]
+
+        if let font = defaults.string(forKey: "FontSize") {
+            
+            slider.fontChange(value: font, textDisplay: textDisplay, fontLabel: fontLabel)
+            fontSlider.value = Float(font) ?? 1.5
+        }
+        
+        tabBar.delegate = self
+        
+        //to swipe left or right
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        
+        leftSwipe.direction = .left
+        rightSwipe.direction = .right
+        
+        textDisplay.addGestureRecognizer(leftSwipe)
+        textDisplay.addGestureRecognizer(rightSwipe)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadCorito()
+        
+    }
+    
+    @IBAction func fontActionSlider(_ sender: Any) {
+        
+        let values = (String(format: "%.1f", fontSlider.value))
+        
+        slider.fontChange(value: values, textDisplay: textDisplay, fontLabel: fontLabel)
+    
+    }
+    
+    @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
+        //print(coritoRate)
+        if coritoRate == 1.0 {
+            
+            audioPlayer!.pause()
+            
+            coritoRate = 0.0
+        }
+        
+        if (sender.direction == .left) {
+            
+             if indexCorito < (coritosDisplay.count - 1) {
+                
+                indexCorito += 1
+                
+                loadView()
+                loadCorito()
+            }
+            
+        }
+        
+        if (sender.direction == .right) {
+            
+             if indexCorito != 0{
+                
+                indexCorito -= 1
+                
+                loadView()
+                loadCorito()
+            }
+            
+        }
+        
+    }
+}
+    
+extension CoritosViewController: UITabBarDelegate {
+    
+    //for when you are inside favoritos view controller
+    func addFavorite(count: Int) {
+       
+        //let count = (coritos.coritos.count)
+        var i = 0
+        print(coritosDisplay[indexCorito])
+        while i <= count {
+            
+            if coritosDisplay[indexCorito].title.contains(coritos.coritos[i].title) {
+                
+                favoritosDictionary[coritoFavorito]!.remove(at: (i))
+                
+                
+                i = (count + count)
+            }
+                
+            else if coritosDisplay[indexCorito].title.contains(coritosViejos.antiguo[i].title) {
+                
+                favoritosDictionary[coritoFavorito]!.remove(at: (i))
+                
+                i = (count + count)
+            }
+            
+            else if i == count {
+                
+                //favoritosDictionary[coritoFavorito].append(indexCorito)
+            }
+            
+            i += 1
+        }
+    }
+    
+    //for when you are inside himnario viejo o nuevo
+    func deleteFavorite() {
+        
+        if favoritosDictionary[coritoFavorito]!.contains(indexCorito) {
+            
+            favoritosDictionary[coritoFavorito]!.remove(at: (indexCorito))
+            //favoritosArray.remove(at: favoritosArray.firstIndex(of: indexCorito)!)
+            //favoritosArray.remove(at: favoritosArray.index()
+        }
+        
+        else {
+            
+            favoritosDictionary[coritoFavorito]!.append(indexCorito)
+        }
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        if(item.tag == 1) {
+            // me di cuenta que no necesito saber si estoy en el view nuevo o viejo porque
+            //ya lo se por el coritosDisplay
+            if(coritoFavorito == "Favorito") {
+                
+                addFavorite(count: coritos.coritos.count)
+            }
+            
+            else {
+                
+                deleteFavorite()
+            }
+            
+            self.defaults.set(favoritosDictionary, forKey: "Favoritos")
+            //I tried to reload the view so the favorite view gets update but I faild
+            //FavoritosViewController.loadFavoritos(FavoritosViewController)
+        }
+            
+        else if(item.tag == 2) {
+           
+            if fontView.isHidden {
+                
+                fontView.isHidden = false
+            }
+            
+            else {
+                
+                fontView.isHidden = true
+            }
+        }
+        
+        else if(item.tag == 3) {
+            
+            if coritosDisplay[indexCorito].himnoUrl != "" {
+                
+                let urlString: String?
+                urlString = coritosDisplay[indexCorito].himnoUrl
+                
+                guard let url = URL(string: urlString!.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+                    
+                else {return}
+                
+                audioPlayer = AVPlayer(url: url)
+                
+                if coritoRate == 1.0 {
+                    audioPlayer!.pause()
+                    
+                    reproducirItem.title = "Reproducir"
+                    coritoRate = 0.0
+                }
+                
+                else if audioPlayer!.rate == 0.0 {
+                    
+                    if (coritosDisplay[indexCorito].title == "23. DIOS ESTÁ AQUÍ" || coritosDisplay[indexCorito].title == "33. SI NO ES ESO AMOR" || coritosDisplay[indexCorito].title == "70. CON GRAN GOZO Y PLACER") {
+                        
+                        let url1 = URL(string: urlString!)
+                        
+                        audioPlayer = AVPlayer(url: url1!)
+                        
+                    }
+                    
+                    audioPlayer!.play()
+                    reproducirItem.title = "Pausar"
+                }
+                
+                coritoRate = audioPlayer!.rate
+            }
+            
+            else {
+                
+                reproducirItem.title = "No Audio"
+            }
+            
+        }
+    }
+}
+
+
