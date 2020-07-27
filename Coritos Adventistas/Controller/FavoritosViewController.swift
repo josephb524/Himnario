@@ -31,8 +31,8 @@ class FavoritosViewController: UIViewController {
     func loadFavoritos() {
         
         self.favoritosTableView.reloadData()
-        coritosFavoritos(nuevoViejo: "Nuevo")
-        coritosFavoritos(nuevoViejo: "Viejo")
+        coritosFavoritos()
+        coritosFavoritos()
         
         favoritosTableView.delegate = self
         favoritosTableView.dataSource = self
@@ -45,11 +45,11 @@ class FavoritosViewController: UIViewController {
         loadFavoritos()
     }
     
-    func coritosFavoritos(nuevoViejo: String) {
+    func coritosFavoritos() {
         
         favoritosLength = defaults.dictionary(forKey: "Favoritos") as? [String : [Int]] ?? ["Nuevo" : [], "Viejo" : []]
         
-        if favoritosLength["Nuevo"]!.count != 0{
+        if favoritosLength["Nuevo"]!.count != 0 {
             
             var i = 0
             
@@ -61,7 +61,7 @@ class FavoritosViewController: UIViewController {
             }
         }
         
-        if favoritosLength["Viejo"]!.count != 0{
+        if favoritosLength["Viejo"]!.count != 0 {
             
             var i = 0
             
@@ -83,12 +83,12 @@ extension FavoritosViewController: UITableViewDataSource {
         
         if(isNotSearching) {
             
-            count = favoritosArray.count
+            count = (favoritosArray.count / 2)
         }
             
         else {
             
-            count = (coritosView.count)
+            count = (coritosView.count / 2)
         }
         
         return count

@@ -86,7 +86,7 @@ class CoritosViewController: UIViewController {
     }
     
     @objc func handleSwipes(_ sender:UISwipeGestureRecognizer) {
-        //print(coritoRate)
+        
         if coritoRate == 1.0 {
             
             audioPlayer!.pause()
@@ -131,7 +131,7 @@ extension CoritosViewController: UITabBarDelegate {
         print(coritosDisplay[indexCorito])
         while i <= count {
             
-            if coritosDisplay[indexCorito].title.contains(coritos.coritos[i].title) {
+            if coritosDisplay[indexCorito].title.contains(coritos.coritos[i].title) && coritoFavorito == "Nuevo" {
                 
                 favoritosDictionary[coritoFavorito]!.remove(at: (i))
                 
@@ -139,7 +139,7 @@ extension CoritosViewController: UITabBarDelegate {
                 i = (count + count)
             }
                 
-            else if coritosDisplay[indexCorito].title.contains(coritosViejos.antiguo[i].title) {
+            else if coritosDisplay[indexCorito].title.contains(coritosViejos.antiguo[i].title) && coritoFavorito == "Viejo" {
                 
                 favoritosDictionary[coritoFavorito]!.remove(at: (i))
                 
@@ -158,11 +158,20 @@ extension CoritosViewController: UITabBarDelegate {
     //for when you are inside himnario viejo o nuevo
     func deleteFavorite() {
         
+        //algorithm to find the hymn that has to be delete
         if favoritosDictionary[coritoFavorito]!.contains(indexCorito) {
             
-            favoritosDictionary[coritoFavorito]!.remove(at: (indexCorito))
-            //favoritosArray.remove(at: favoritosArray.firstIndex(of: indexCorito)!)
-            //favoritosArray.remove(at: favoritosArray.index()
+            var indexFavorito = 0
+            
+            for i in favoritosDictionary[coritoFavorito]! {
+                
+                if i == indexCorito {
+                    
+                    favoritosDictionary[coritoFavorito]!.remove(at: (indexFavorito))
+                }
+                
+                indexFavorito += 1
+            }
         }
         
         else {
@@ -174,8 +183,7 @@ extension CoritosViewController: UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         if(item.tag == 1) {
-            // me di cuenta que no necesito saber si estoy en el view nuevo o viejo porque
-            //ya lo se por el coritosDisplay
+            
             if(coritoFavorito == "Favorito") {
                 
                 addFavorite(count: coritos.coritos.count)
