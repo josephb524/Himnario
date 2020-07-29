@@ -118,12 +118,12 @@ class HimnarioAntiguoViewController: UIViewController {
             else {
                 antiguoSearch.showsCancelButton = true
                 var search = SearchBrain()
-                search.search(searchType: antiguoSearch.text!)
+                search.search(searchViejo: antiguoSearch.text!)
 
-                indexRows = search.getIndex()
+                indexRows = search.getHimnoViejoIndex()
 
                 isNotSearching = false
-                coritosView = search.getCoritos()
+                coritosView = search.getHimnoViejo()
                 self.antiguoTableView.reloadData()
             }
         }

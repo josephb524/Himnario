@@ -14,6 +14,10 @@ struct SearchBrain {
     var searchCoritos = [Himnos]()
     var searchResults: [Int] = []
     
+    var himnoViejo = HimnarioViejoBrain()
+    var searchHimno = [Himnos]()
+    var searchResultsHimno: [Int] = []
+    
     var searchCoritosFavoritos = [Himnos]()
     var searchResultsFavoritos: [Int] = []
     
@@ -33,6 +37,19 @@ struct SearchBrain {
                 
                 e += 1
             }
+            //just make another like you did with the favoritos
+            else if i < himnoViejo.antiguo.count  {
+                
+                if himnoViejo.antiguo [i].title.lowercased().contains(searchType.lowercased()) {
+                    
+                    searchCoritos.append(Himnos(title: himnoViejo.antiguo[i].title, himnos: himnoViejo.antiguo[i].himnos, himnoUrl: himnoViejo.antiguo[i].himnoUrl))
+                    
+                    searchResults.append(1)
+                    searchResults[e] = i
+                    
+                    e += 1
+                }
+            }
             
             i += 1
         }
@@ -47,6 +64,41 @@ struct SearchBrain {
         
         return searchResults
     }
+    
+//  <--------------------------------Himnario Viejo Search-------------------------------->
+    
+    
+    mutating func search(searchViejo: String)   {
+        
+        var i = 0
+        var e = 0
+        
+        while i < himnoViejo.antiguo.count {
+            
+            if himnoViejo.antiguo [i].title.lowercased().contains(searchViejo.lowercased()) {
+                
+                searchCoritos.append(Himnos(title: himnoViejo.antiguo[i].title, himnos: himnoViejo.antiguo[i].himnos, himnoUrl: himnoViejo.antiguo[i].himnoUrl))
+                
+                searchResults.append(1)
+                searchResults[e] = i
+                
+                e += 1
+            }
+            
+            i += 1
+        }
+    }
+    
+    func getHimnoViejo() -> [Himnos] {
+        
+        return searchCoritos
+    }
+    
+    func getHimnoViejoIndex() -> [Int] {
+        
+        return searchResults
+    }
+    
     
     
     

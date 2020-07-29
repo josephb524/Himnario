@@ -125,9 +125,9 @@ extension CoritosViewController: UITabBarDelegate {
     
     //for when you are inside favoritos view controller
     func addFavorite() {
-       // TENGO QUE ARREGLAR ESTA COCHINADA
+       
         for i in favoritosDictionary["Nuevo"]! {
-             //print(indexCorito)
+             
             if coritos.coritos[i].title == coritosDisplay[indexCorito].title {
             
                 favoritosDictionary["Nuevo"]!.remove(at: (indexCorito))
@@ -210,7 +210,7 @@ extension CoritosViewController: UITabBarDelegate {
                 else {return}
                 
                 audioPlayer = AVPlayer(url: url)
-                
+                //YOU MIGHT BE ABLE TO CHANGE THE CODE BY CHANGING THE IF STATEMENT
                 if coritoRate == 1.0 {
                     audioPlayer!.pause()
                     
