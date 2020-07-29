@@ -124,34 +124,22 @@ class CoritosViewController: UIViewController {
 extension CoritosViewController: UITabBarDelegate {
     
     //for when you are inside favoritos view controller
-    func addFavorite(count: Int) {
-       
-        //let count = (coritos.coritos.count)
-        var i = 0
-        print(coritosDisplay[indexCorito])
-        while i <= count {
+    func addFavorite() {
+       // TENGO QUE ARREGLAR ESTA COCHINADA
+        for i in favoritosDictionary["Nuevo"]! {
+             //print(indexCorito)
+            if coritos.coritos[i].title == coritosDisplay[indexCorito].title {
             
-            if coritosDisplay[indexCorito].title.contains(coritos.coritos[i].title) && coritoFavorito == "Nuevo" {
-                
-                favoritosDictionary[coritoFavorito]!.remove(at: (i))
-                
-                
-                i = (count + count)
+                favoritosDictionary["Nuevo"]!.remove(at: (indexCorito))
             }
-                
-            else if coritosDisplay[indexCorito].title.contains(coritosViejos.antiguo[i].title) && coritoFavorito == "Viejo" {
-                
-                favoritosDictionary[coritoFavorito]!.remove(at: (i))
-                
-                i = (count + count)
-            }
+        }
+        
+        for i in favoritosDictionary["Viejo"]! {
             
-            else if i == count {
+            if coritosViejos.antiguo[i].title == coritosDisplay[indexCorito].title {
                 
-                //favoritosDictionary[coritoFavorito].append(indexCorito)
+                favoritosDictionary["Viejo"]!.remove(at: (indexCorito - favoritosDictionary["Nuevo"]!.count))
             }
-            
-            i += 1
         }
     }
     
@@ -186,7 +174,7 @@ extension CoritosViewController: UITabBarDelegate {
             
             if(coritoFavorito == "Favorito") {
                 
-                addFavorite(count: coritos.coritos.count)
+                addFavorite()
             }
             
             else {
@@ -195,8 +183,6 @@ extension CoritosViewController: UITabBarDelegate {
             }
             
             self.defaults.set(favoritosDictionary, forKey: "Favoritos")
-            //I tried to reload the view so the favorite view gets update but I faild
-            //FavoritosViewController.loadFavoritos(FavoritosViewController)
         }
             
         else if(item.tag == 2) {
@@ -233,14 +219,6 @@ extension CoritosViewController: UITabBarDelegate {
                 }
                 
                 else if audioPlayer!.rate == 0.0 {
-                    
-                    if (coritosDisplay[indexCorito].title == "23. DIOS ESTÁ AQUÍ" || coritosDisplay[indexCorito].title == "33. SI NO ES ESO AMOR" || coritosDisplay[indexCorito].title == "70. CON GRAN GOZO Y PLACER") {
-                        
-                        let url1 = URL(string: urlString!)
-                        
-                        audioPlayer = AVPlayer(url: url1!)
-                        
-                    }
                     
                     audioPlayer!.play()
                     reproducirItem.title = "Pausar"

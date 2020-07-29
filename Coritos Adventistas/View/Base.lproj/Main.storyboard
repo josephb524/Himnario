@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="itp-Gw-qkL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="itp-Gw-qkL">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6F-Xk-lKS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4847.1999999999998" y="16.995073891625616"/>
+            <point key="canvasLocation" x="4273" y="40"/>
         </scene>
         <!--Favoritos-->
         <scene sceneID="P2a-dn-pY1">
@@ -228,7 +228,7 @@
                         <outlet property="favoritosSearch" destination="OyK-fs-hJZ" id="0fL-S1-elG"/>
                         <outlet property="favoritosTableView" destination="iaE-R7-ufi" id="zQB-G8-x2U"/>
                         <outlet property="favoritosTextView" destination="iaE-R7-ufi" id="NTx-dF-3ma"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="CoritosFavoritos" id="ETD-ex-hF8"/>
+                        <segue destination="pTz-5E-TPc" kind="show" identifier="CoritosFavoritos" id="EVL-1C-3NB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qvB-7e-LWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -431,8 +431,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="wbQ-kh-JmX"/>
-        <segue reference="7k5-R0-bms"/>
+        <segue reference="EVL-1C-3NB"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
     <resources>

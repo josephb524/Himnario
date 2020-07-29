@@ -28,33 +28,38 @@ class FavoritosViewController: UIViewController {
     var coritosView = [Himnos]()
     var favoritosArray = [Himnos]()
     
-    func loadFavoritos() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        self.favoritosTableView.reloadData()
-        coritosFavoritos()
         coritosFavoritos()
         
         favoritosTableView.delegate = self
         favoritosTableView.dataSource = self
         favoritosSearch.delegate = self
+        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    //to reload the view everytime you add or remove form favoritos
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        loadFavoritos()
+        favoritosArray.removeAll()
+        coritosFavoritos()
+        self.favoritosTableView.reloadData()
     }
+    
     
     func coritosFavoritos() {
         
         favoritosLength = defaults.dictionary(forKey: "Favoritos") as? [String : [Int]] ?? ["Nuevo" : [], "Viejo" : []]
+        
         
         if favoritosLength["Nuevo"]!.count != 0 {
             
             var i = 0
             
             while i < favoritosLength["Nuevo"]!.count {
-                //te quedaste aqui como cambiar coritos to coritosViejo
+                
                 favoritosArray.append(Himnos(title: coritos.coritos[favoritosLength["Nuevo"]![i]].title, himnos: coritos.coritos[favoritosLength["Nuevo"]![i]].himnos, himnoUrl: coritos.coritos[favoritosLength["Nuevo"]![i]].himnoUrl))
                 
                 i += 1
@@ -66,7 +71,7 @@ class FavoritosViewController: UIViewController {
             var i = 0
             
             while i < favoritosLength["Viejo"]!.count {
-                //te quedaste aqui como cambiar coritos to coritosViejo
+                
                 favoritosArray.append(Himnos(title: coritosViejos.antiguo[favoritosLength["Viejo"]![i]].title, himnos: coritosViejos.antiguo[favoritosLength["Viejo"]![i]].himnos, himnoUrl: coritosViejos.antiguo[favoritosLength["Viejo"]![i]].himnoUrl))
                 
                 i += 1
@@ -83,12 +88,12 @@ extension FavoritosViewController: UITableViewDataSource {
         
         if(isNotSearching) {
             
-            count = (favoritosArray.count / 2)
+            count = (favoritosArray.count)
         }
             
         else {
             
-            count = (coritosView.count / 2)
+            count = (coritosView.count)
         }
         
         return count
