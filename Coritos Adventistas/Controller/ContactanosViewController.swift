@@ -19,6 +19,7 @@ class ContactanosViewController: UIViewController {
         contactanosText.isSelectable = true
         contactanosText.isEditable = false
         contactanosText.dataDetectorTypes = UIDataDetectorTypes.link
+        contactanosText.tintColor = #colorLiteral(red: 0.03921568627, green: 0.5176470588, blue: 1, alpha: 1)
         
         contactanosText.text = contactanos()
     }

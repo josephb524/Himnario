@@ -77,6 +77,16 @@ class CoritosViewController: UIViewController {
         
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        if coritoRate == 1.0 {
+            audioPlayer!.pause()
+            
+            reproducirItem.title = "Reproducir"
+            coritoRate = 0.0
+        }
+    }
+    
     @IBAction func fontActionSlider(_ sender: Any) {
         
         let values = (String(format: "%.1f", fontSlider.value))
