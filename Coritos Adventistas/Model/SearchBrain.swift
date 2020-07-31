@@ -37,19 +37,6 @@ struct SearchBrain {
                 
                 e += 1
             }
-            //just make another like you did with the favoritos
-            else if i < himnoViejo.antiguo.count  {
-                
-                if himnoViejo.antiguo [i].title.lowercased().contains(searchType.lowercased()) {
-                    
-                    searchCoritos.append(Himnos(title: himnoViejo.antiguo[i].title, himnos: himnoViejo.antiguo[i].himnos, himnoUrl: himnoViejo.antiguo[i].himnoUrl))
-                    
-                    searchResults.append(1)
-                    searchResults[e] = i
-                    
-                    e += 1
-                }
-            }
             
             i += 1
         }
