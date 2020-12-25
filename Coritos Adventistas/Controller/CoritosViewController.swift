@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Network
 
 class CoritosViewController: UIViewController {
 
@@ -34,6 +35,8 @@ class CoritosViewController: UIViewController {
     var audioPlayer: AVPlayer?
     
     var coritoRate: Float = 0.0
+    
+    let monitor = NWPathMonitor()
     
     let defaults = UserDefaults.standard
     
@@ -220,7 +223,28 @@ extension CoritosViewController: UITabBarDelegate {
                 else {return}
                 
                 audioPlayer = AVPlayer(url: url)
-                //YOU MIGHT BE ABLE TO CHANGE THE CODE BY CHANGING THE IF STATEMENT
+                
+//                var internetConnection = true
+//                
+//                //check if there is internet conection
+//                monitor.pathUpdateHandler = { path in
+//                    if path.status == .satisfied {
+//                        
+//                        internetConnection = true
+//                        
+//                    } else {
+//                        
+//                        let alert = UIAlertController(title: "No tienes conecion a internet", message: "Nesecitas internet para poder reproducir los himnos", preferredStyle: .alert)
+//                        
+//                        //                            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+//                        //                            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+//                        internetConnection = false
+//                        self.present(alert, animated: true)
+//                    }
+//                    print("here")
+//                    print(path.isExpensive)
+//                }
+                
                 if coritoRate == 1.0 {
                     audioPlayer!.pause()
                     
@@ -228,7 +252,7 @@ extension CoritosViewController: UITabBarDelegate {
                     coritoRate = 0.0
                 }
                 
-                else if audioPlayer!.rate == 0.0 {
+                else if audioPlayer!.rate == 0.0 { //&& internetConnection {
                     
                     audioPlayer!.play()
                     reproducirItem.title = "Pausar"
