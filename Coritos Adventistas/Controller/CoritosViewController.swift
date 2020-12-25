@@ -256,6 +256,13 @@ extension CoritosViewController: UITabBarDelegate {
                     
                     audioPlayer!.play()
                     reproducirItem.title = "Pausar"
+                    
+                    //allow the device play music when the phone is in silent mode
+                    do {
+                          try AVAudioSession.sharedInstance().setCategory(.playback)
+                       } catch(let error) {
+                           print(error.localizedDescription)
+                       }
                 }
                 
                 coritoRate = audioPlayer!.rate
