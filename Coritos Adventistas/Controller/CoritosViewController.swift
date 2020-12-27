@@ -223,6 +223,7 @@ extension CoritosViewController: UITabBarDelegate {
                 else {return}
                 
                 audioPlayer = AVPlayer(url: url)
+                audioPlayer!.automaticallyWaitsToMinimizeStalling = false
                 
 //                var internetConnection = true
 //                

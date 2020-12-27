@@ -379,7 +379,7 @@
         <scene sceneID="dCN-jA-SXa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zPz-eS-mFb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Himnario Nuevo" image="music.note" catalog="system" id="52T-0R-uhe"/>
+                    <tabBarItem key="tabBarItem" title="Himnario Nuevo" image="icons8-classic-music-96" id="52T-0R-uhe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9bi-1J-Kjw">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -417,7 +417,7 @@
         <scene sceneID="AWC-kQ-daa">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6uI-8y-TjF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Himnario Antiguo" image="music.note" catalog="system" id="Mbh-Ef-sgb"/>
+                    <tabBarItem key="tabBarItem" title="Himnario Antiguo" image="icons8-classic-music-96" id="Mbh-Ef-sgb"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JKk-2T-Dja">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -434,12 +434,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="EVL-1C-3NB"/>
+        <segue reference="XkH-RE-bYT"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="darkTextColor"/>
     <resources>
         <image name="envelope.fill" catalog="system" width="128" height="93"/>
-        <image name="music.note" catalog="system" width="97" height="128"/>
+        <image name="icons8-classic-music-96" width="32" height="32"/>
         <image name="playpause.fill" catalog="system" width="128" height="70"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="textformat" catalog="system" width="128" height="78"/>
