@@ -31,6 +31,8 @@ class FavoritosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        overrideUserInterfaceStyle = .light
+        
         coritosFavoritos()
         
         favoritosTableView.delegate = self

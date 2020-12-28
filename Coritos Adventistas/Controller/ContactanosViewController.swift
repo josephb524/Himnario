@@ -15,6 +15,8 @@ class ContactanosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        overrideUserInterfaceStyle = .light
+        
         contactanosText.isUserInteractionEnabled = true
         contactanosText.isSelectable = true
         contactanosText.isEditable = false

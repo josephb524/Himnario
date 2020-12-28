@@ -71,7 +71,7 @@
                             <constraint firstItem="BRU-TZ-QSl" firstAttribute="top" secondItem="Daw-J1-DTW" secondAttribute="bottom" id="xiz-dw-frY"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Himnario Nuevo (2010)" id="Ra6-34-EY0"/>
+                    <navigationItem key="navigationItem" title="Himnario Nuevo (2010)" largeTitleDisplayMode="never" id="Ra6-34-EY0"/>
                     <connections>
                         <outlet property="searchBar" destination="Daw-J1-DTW" id="IBE-rh-eQD"/>
                         <outlet property="selectTableView" destination="BRU-TZ-QSl" id="23v-ls-qwL"/>
@@ -330,7 +330,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -434,7 +434,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XkH-RE-bYT"/>
+        <segue reference="wbQ-kh-JmX"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="darkTextColor"/>
     <resources>
