@@ -12,10 +12,10 @@ class ContactanosViewController: UIViewController {
 
     @IBOutlet weak var contactanosText: UITextView!
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        overrideUserInterfaceStyle = .light
         
         contactanosText.isUserInteractionEnabled = true
         contactanosText.isSelectable = true
@@ -24,6 +24,16 @@ class ContactanosViewController: UIViewController {
         contactanosText.tintColor = #colorLiteral(red: 0.03921568627, green: 0.5176470588, blue: 1, alpha: 1)
         
         contactanosText.text = contactanos()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        overrideUserInterfaceStyle = .light
+        
+        if defaults.bool(forKey: "DarkMode") !=  true{
+            
+            overrideUserInterfaceStyle = .dark
+        }
     }
     
     func contactanos() -> String{

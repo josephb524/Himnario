@@ -28,10 +28,9 @@ class FavoritosViewController: UIViewController {
     var coritosView = [Himnos]()
     var favoritosArray = [Himnos]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        overrideUserInterfaceStyle = .light
         
         coritosFavoritos()
         
@@ -46,6 +45,13 @@ class FavoritosViewController: UIViewController {
     //to reload the view everytime you add or remove form favoritos
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        overrideUserInterfaceStyle = .light
+        
+        if defaults.bool(forKey: "DarkMode") !=  true{
+            
+            overrideUserInterfaceStyle = .dark
+        }
         
         favoritosArray.removeAll()
         coritosFavoritos()

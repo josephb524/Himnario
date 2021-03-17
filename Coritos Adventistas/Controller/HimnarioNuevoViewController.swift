@@ -25,10 +25,12 @@ class HimnarioNuevoViewController: UIViewController {
     var search = SearchBrain()
     var coritosView = [Himnos]()
     
+    let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        overrideUserInterfaceStyle = .light
+        
         
         selectTableView.delegate = self
         selectTableView.dataSource = self
@@ -36,6 +38,24 @@ class HimnarioNuevoViewController: UIViewController {
         //tabBar.delegate = self
         
         self.addDoneButtonOnKeyboard()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        overrideUserInterfaceStyle = .light
+        tabBarController!.tabBar.barTintColor = UIColor.white
+        
+        if defaults.bool(forKey: "DarkMode") !=  true{
+            
+            overrideUserInterfaceStyle = .dark
+            //UITabBar.appearance().barTintColor = UIColor.black
+            UITabBar.appearance().overrideUserInterfaceStyle = .dark
+            //UITabBarController overrideUserInterfaceStyle = .dark
+            
+            //tabBarController!.overrideUserInterfaceStyle = .dark
+            //tabBarController!.tabBar.overrideUserInterfaceStyle = .dark
+            tabBarController!.tabBar.barTintColor = UIColor.black
+        }
     }
 }
 
