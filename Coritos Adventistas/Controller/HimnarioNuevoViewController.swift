@@ -50,9 +50,9 @@ class HimnarioNuevoViewController: UIViewController {
             overrideUserInterfaceStyle = .dark
             //UITabBar.appearance().barTintColor = UIColor.black
             UITabBar.appearance().overrideUserInterfaceStyle = .dark
-            //UITabBarController overrideUserInterfaceStyle = .dark
             
-            //tabBarController!.overrideUserInterfaceStyle = .dark
+            
+            tabBarController!.overrideUserInterfaceStyle = .dark
             //tabBarController!.tabBar.overrideUserInterfaceStyle = .dark
             tabBarController!.tabBar.barTintColor = UIColor.black
         }
