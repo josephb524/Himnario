@@ -27,10 +27,12 @@ class HimnarioNuevoViewController: UIViewController {
     
     let defaults = UserDefaults.standard
     
+    var data = ManagerAPI()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        data.performRequest(apiURL: "https://dn2.monophonic.digital/v1/playlists/ezPGw/tracks?app_name=HimnarioViejo")
         
         selectTableView.delegate = self
         selectTableView.dataSource = self
@@ -41,19 +43,19 @@ class HimnarioNuevoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        data.performRequest(apiURL: "https://dn2.monophonic.digital/v1/playlists/ezPGw/tracks?app_name=HimnarioViejo")
         overrideUserInterfaceStyle = .light
         tabBarController!.tabBar.barTintColor = UIColor.white
+        selectTableView.backgroundColor = UIColor.white
         
         if defaults.bool(forKey: "DarkMode") !=  true{
             
             overrideUserInterfaceStyle = .dark
-            //UITabBar.appearance().barTintColor = UIColor.black
             UITabBar.appearance().overrideUserInterfaceStyle = .dark
             
+            selectTableView.backgroundColor = UIColor.black
             
             tabBarController!.overrideUserInterfaceStyle = .dark
-            //tabBarController!.tabBar.overrideUserInterfaceStyle = .dark
             tabBarController!.tabBar.barTintColor = UIColor.black
         }
     }

@@ -13,7 +13,7 @@ class ContactanosViewController: UIViewController {
     @IBOutlet weak var contactanosText: UITextView!
     
     let defaults = UserDefaults.standard
-    
+    var data = ManagerAPI()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +27,7 @@ class ContactanosViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        data.performRequest(apiURL: "https://dn2.monophonic.digital/v1/playlists/ezPGw/tracks?app_name=HimnarioViejo")
         overrideUserInterfaceStyle = .light
         
         if defaults.bool(forKey: "DarkMode") !=  true{

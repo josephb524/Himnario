@@ -27,7 +27,7 @@ class FavoritosViewController: UIViewController {
     var search = SearchBrain()
     var coritosView = [Himnos]()
     var favoritosArray = [Himnos]()
-    
+    var data = ManagerAPI()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class FavoritosViewController: UIViewController {
     //to reload the view everytime you add or remove form favoritos
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        data.performRequest(apiURL: "https://dn2.monophonic.digital/v1/playlists/ezPGw/tracks?app_name=HimnarioViejo")
         overrideUserInterfaceStyle = .light
         
         if defaults.bool(forKey: "DarkMode") !=  true{

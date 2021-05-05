@@ -17,9 +17,12 @@
 		BB0411DA246B762700B81F06 /* CoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0411D9246B762700B81F06 /* CoritosViewController.swift */; };
 		BB171F0524A11D2700D9F729 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB171F0424A11D2700D9F729 /* Default-568h@2x.png */; };
 		BB6535CD2472FD82005B287E /* SearchBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6535CC2472FD82005B287E /* SearchBrain.swift */; };
+		BB9E1FC5263CA2A000EE215D /* ManagerAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E1FC4263CA2A000EE215D /* ManagerAPI.swift */; };
+		BB9E1FC8263CB0CE00EE215D /* DataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E1FC7263CB0CE00EE215D /* DataAPI.swift */; };
 		BBC57D3324981887004A513E /* HimnarioViejoBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC57D3224981887004A513E /* HimnarioViejoBrain.swift */; };
 		BBC57D3524982E75004A513E /* HimnarioNuevoBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC57D3424982E75004A513E /* HimnarioNuevoBrain.swift */; };
 		BBC57D3724985CE5004A513E /* HimnarioAntiguoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC57D3624985CE5004A513E /* HimnarioAntiguoViewController.swift */; };
+		BBCF46F2263669C6006966DC /* HimnoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCF46F1263669C6006966DC /* HimnoPlayer.swift */; };
 		BBF5AB96247C937A00866BEB /* SliderFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5AB95247C937A00866BEB /* SliderFont.swift */; };
 		BBF5AB98247DAACF00866BEB /* FavoritosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5AB97247DAACF00866BEB /* FavoritosViewController.swift */; };
 		BBF5AB9E248EB6A900866BEB /* ContactanosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5AB9D248EB6A900866BEB /* ContactanosViewController.swift */; };
@@ -38,9 +41,12 @@
 		BB0411D9246B762700B81F06 /* CoritosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoritosViewController.swift; sourceTree = "<group>"; };
 		BB171F0424A11D2700D9F729 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BB6535CC2472FD82005B287E /* SearchBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrain.swift; sourceTree = "<group>"; };
+		BB9E1FC4263CA2A000EE215D /* ManagerAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerAPI.swift; sourceTree = "<group>"; };
+		BB9E1FC7263CB0CE00EE215D /* DataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAPI.swift; sourceTree = "<group>"; };
 		BBC57D3224981887004A513E /* HimnarioViejoBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HimnarioViejoBrain.swift; sourceTree = "<group>"; };
 		BBC57D3424982E75004A513E /* HimnarioNuevoBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HimnarioNuevoBrain.swift; sourceTree = "<group>"; };
 		BBC57D3624985CE5004A513E /* HimnarioAntiguoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HimnarioAntiguoViewController.swift; sourceTree = "<group>"; };
+		BBCF46F1263669C6006966DC /* HimnoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HimnoPlayer.swift; sourceTree = "<group>"; };
 		BBF5AB95247C937A00866BEB /* SliderFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderFont.swift; sourceTree = "<group>"; };
 		BBF5AB97247DAACF00866BEB /* FavoritosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritosViewController.swift; sourceTree = "<group>"; };
 		BBF5AB9D248EB6A900866BEB /* ContactanosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactanosViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +123,9 @@
 				BB6535CC2472FD82005B287E /* SearchBrain.swift */,
 				BBF5AB95247C937A00866BEB /* SliderFont.swift */,
 				BBC57D3424982E75004A513E /* HimnarioNuevoBrain.swift */,
+				BBCF46F1263669C6006966DC /* HimnoPlayer.swift */,
+				BB9E1FC4263CA2A000EE215D /* ManagerAPI.swift */,
+				BB9E1FC7263CB0CE00EE215D /* DataAPI.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -194,14 +203,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB0411BD246B459A00B81F06 /* AppDelegate.swift in Sources */,
+				BB9E1FC8263CB0CE00EE215D /* DataAPI.swift in Sources */,
 				BBC57D3324981887004A513E /* HimnarioViejoBrain.swift in Sources */,
 				BB0411DA246B762700B81F06 /* CoritosViewController.swift in Sources */,
 				BBC57D3724985CE5004A513E /* HimnarioAntiguoViewController.swift in Sources */,
 				BB0411D4246B461700B81F06 /* HimnarioNuevoViewController.swift in Sources */,
 				BB0411BF246B459A00B81F06 /* SceneDelegate.swift in Sources */,
 				BBF5AB96247C937A00866BEB /* SliderFont.swift in Sources */,
+				BBCF46F2263669C6006966DC /* HimnoPlayer.swift in Sources */,
 				BBC57D3524982E75004A513E /* HimnarioNuevoBrain.swift in Sources */,
 				BB6535CD2472FD82005B287E /* SearchBrain.swift in Sources */,
+				BB9E1FC5263CA2A000EE215D /* ManagerAPI.swift in Sources */,
 				BB0411D6246B466800B81F06 /* Himnos.swift in Sources */,
 				BBF5AB9E248EB6A900866BEB /* ContactanosViewController.swift in Sources */,
 				BBF5AB98247DAACF00866BEB /* FavoritosViewController.swift in Sources */,
@@ -358,7 +370,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JosePimentel.HimnarioViejoYNuevo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -379,7 +391,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JosePimentel.HimnarioViejoYNuevo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

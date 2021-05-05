@@ -25,7 +25,7 @@ class HimnarioAntiguoViewController: UIViewController {
     var coritosView = [Himnos]()
     
     let defaults = UserDefaults.standard
-    
+    var data = ManagerAPI()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,12 +38,16 @@ class HimnarioAntiguoViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        data.performRequest(apiURL: "https://dn2.monophonic.digital/v1/playlists/ezPGw/tracks?app_name=HimnarioViejo")
         overrideUserInterfaceStyle = .light
         
-        if defaults.bool(forKey: "DarkMode") !=  true{
+        antiguoTableView.backgroundColor = UIColor.white
+        
+        if defaults.bool(forKey: "DarkMode") !=  true {
             
             overrideUserInterfaceStyle = .dark
+            
+            antiguoTableView.backgroundColor = UIColor.black
         }
     }
 }
