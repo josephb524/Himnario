@@ -25,6 +25,7 @@ class CoritosViewController: UIViewController {
     @IBOutlet weak var playerBar: UIProgressView!
     @IBOutlet weak var playPauseImage: UIButton!
     @IBOutlet weak var PlayerTimer: UILabel!
+    @IBOutlet weak var TextDisplayView: UIView!
     
     var coritos = HimnarioNuevoBrain()
     var coritosViejos = HimnarioViejoBrain()
@@ -42,13 +43,17 @@ class CoritosViewController: UIViewController {
     var isChangeHimnoName = false
     
     static var audioPlayer: AVPlayer?
-    static var launchBefore = 1
+    static var launchBefore = false
     static var indexCoritoPlaying = 1
+    static var progressBarCount: Int = 0
+    static var timer = Timer()
+    static var progressBarProgress: Float = 0.0
+    static var trackTime = ""
+    static var trackDuration = 0
+    static var cualHimnarioNuevoOAntiguo: String?
     
     var coritoRate: Float = 0.0
-    var timer = Timer()
     var duration: Int = 0
-    var progressBarCount: Int = 1
     
     let monitor = NWPathMonitor()
     
@@ -66,12 +71,24 @@ class CoritosViewController: UIViewController {
     
     // MAKE THIS FUNCTION GLOBAL AND PUT IT IN ANOTHER CLASS THAT WAY YOU WILL BE ABLE TO PAUSE AND RESUME ANYWHERE
     func audioReproduction() {
-        
+        apiHimnoSelection()
+        audioPlayerView()
         //check if the same song is playing
-        if coritosDisplay[indexCorito].himnoUrl != songPlaying && coritoRate == 0.0 {//&& CoritosViewController.launchBefore == 1 {
+        if playerBar.progress == 0.0 && !CoritosViewController.launchBefore { //coritosDisplay[indexCorito].himnoUrl != songPlaying && coritoRate == 0.0 {//&& CoritosViewController.launchBefore == 1 {
+            CoritosViewController.progressBarProgress = 0.0
             
             let urlString: String?
-            urlString = coritosDisplay[indexCorito].himnoUrl
+            if coritoFavorito == "Nuevo" {
+                
+                urlString = "https://discoveryprovider.audius7.prod-us-west-2.staked.cloud/v1/tracks/\(data.trackName)/stream?app_name=HimnarioViejo"
+            }
+            
+            else {
+                
+                urlString = coritosDisplay[indexCorito].himnoUrl
+            }
+            
+            
             
             songPlaying = coritosDisplay[indexCorito].himnoUrl
             
@@ -82,16 +99,17 @@ class CoritosViewController: UIViewController {
             CoritosViewController.audioPlayer = AVPlayer(url: url)
             CoritosViewController.audioPlayer!.automaticallyWaitsToMinimizeStalling = false
             
-            CoritosViewController.launchBefore = 2
+            CoritosViewController.launchBefore = true
             CoritosViewController.indexCoritoPlaying = indexCorito
             
         }
         print(playPauseImage == #imageLiteral(resourceName: "pause-svgrepo-com-1"))
         //I HAVE TO THINK OF A BOOL comparation to be able to pause after the view disapper
-        if coritoRate == 1.0 || playPauseImage.isEqual(#imageLiteral(resourceName: "pause-svgrepo-com-1")) {
+        if CoritosViewController.audioPlayer!.timeControlStatus == AVPlayer.TimeControlStatus.playing { //coritoRate >= 1.0 && playerBar.progress > 0.0 {//|| playPauseImage.isEqual(#imageLiteral(resourceName: "pause-svgrepo-com-1")) {
             
             CoritosViewController.audioPlayer!.pause()
             
+            CoritosViewController.timer.invalidate()
             reproducirItem.title = "Reproducir"
             coritoRate = 0.0
             
@@ -99,21 +117,27 @@ class CoritosViewController: UIViewController {
             playPauseImage.setImage(#imageLiteral(resourceName: "play-button-svgrepo-com-1"), for: .normal)
         }
         
-        else if CoritosViewController.audioPlayer!.rate == 0.0 { //&& internetConnection {
+        else if CoritosViewController.audioPlayer!.timeControlStatus == AVPlayer.TimeControlStatus.paused { //CoritosViewController.audioPlayer!.rate == 0.0 { //&& internetConnection {
             
             CoritosViewController.audioPlayer!.play()
             print(CoritosViewController.audioPlayer!.currentTime().seconds)
-            reproducirItem.title = "Pausar"
+            //reproducirItem.title = "Pausar"
             
-            timer.invalidate()
+            
             //put this func here so the himno name gets updated when you hit play maybe it can be remove after
-//            if CoritosViewController.launchBefore == 1 {
-//                audioPlayerView()
+            if CoritosViewController.launchBefore == false {
+                audioPlayerView()
+            }
+            
+//            if progressBarCount > 1 {
+//
+//                timer.fire()
 //            }
-            
+//            else {
             //this timer is to count the song playing time
-            //timer = Timer.scheduledTimer(timeInterval: TimeInterval(progressBarCount), target: self, selector: #selector(progressBarTimer), userInfo: nil, repeats: true)
+            CoritosViewController.timer = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(progressBarTimer), userInfo: nil, repeats: true)
             
+            //}
             playPauseImage.setImage(#imageLiteral(resourceName: "pause-svgrepo-com-1"), for: .normal)
             
             
@@ -128,80 +152,100 @@ class CoritosViewController: UIViewController {
         coritoRate = CoritosViewController.audioPlayer!.rate
     }
     
-//    func audioPlayerView() {
-//
-//        PlayerTimer.text = data.trackTime
-//
-//        //necito poner un OR aqui
-//        if coritoRate == 0.0 || isChangeHimnoName {
-//
-//            isChangeHimnoName = false
-//
-//            // cut the himno name show in the player so it doesn't overlap
-//            if CoritosViewController.launchBefore == 1 {
-//
-//                himnoPlayerName.text = coritosDisplay[indexCorito].title
-//            }
-//
-//            else {
-//
-//                himnoPlayerName.text = coritosDisplay[CoritosViewController.indexCoritoPlaying].title
-//            }
-//
-//            if himnoPlayerName.text!.count > 35 {
-//
-//                himnoPlayerName.text = String(himnoPlayerName.text!.dropLast(16))
-//                himnoPlayerName.text?.append("...")
-//
-//            }
-//
-//            else if himnoPlayerName.text!.count > 30 {
-//
-//                himnoPlayerName.text = String(himnoPlayerName.text!.dropLast(9))
-//                himnoPlayerName.text?.append("...")
-//            }
-//
-//            //PlayerTimer.text = String(format: PlayerTimer.text?, //CoritosViewController.audioPlayer?.currentItem!.duration as CVarArg)
-//            //PlayerTimer.text = String(CoritosViewController.audioPlayer!.currentTime().seconds)
-//
-//
-//
-//        }
-//
-//        self.view.addSubview(audioView)
-//
-//        audioView.layer.cornerRadius = 15
-//        playPauseImage.layer.cornerRadius = 15
-//        //playPauseImage.layer.borderColor =
-//        playPauseImage.layer.borderWidth = 1
-//        audioView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        audioView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 600).isActive = true
-//        audioView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
-//        audioView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
-//        audioView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
-//
-////        audioView.widthAnchor.constraint(equalToConstant: 249).isActive = true
-////        audioView.heightAnchor.constraint(equalToConstant: 90).isActive = true
-//
-//        audioView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//    }
+    func audioPlayerView() {
+
+        //necito poner un OR aqui
+        if coritoRate == 0.0 || isChangeHimnoName {
+
+            isChangeHimnoName = false
+
+            // cut the himno name show in the player so it doesn't overlap
+            if CoritosViewController.launchBefore == false {
+
+                himnoPlayerName.text = coritosDisplay[indexCorito].title
+                CoritosViewController.trackTime = data.trackTime
+                CoritosViewController.trackDuration = data.trackDuration
+                PlayerTimer.text = CoritosViewController.trackTime
+                //CHANGE THIS
+                PlayerTimer.isHidden = true
+            }
+
+            else {
+
+                himnoPlayerName.text = coritosDisplay[CoritosViewController.indexCoritoPlaying].title
+            }
+
+            if himnoPlayerName.text!.count > 35 {
+
+                himnoPlayerName.text = String(himnoPlayerName.text!.dropLast(16))
+                himnoPlayerName.text?.append("...")
+
+            }
+
+            else if himnoPlayerName.text!.count > 30 {
+
+                himnoPlayerName.text = String(himnoPlayerName.text!.dropLast(9))
+                himnoPlayerName.text?.append("...")
+            }
+
+            //PlayerTimer.text = String(format: PlayerTimer.text?, //CoritosViewController.audioPlayer?.currentItem!.duration as CVarArg)
+            //PlayerTimer.text = String(CoritosViewController.audioPlayer!.currentTime().seconds)
+
+
+
+        }
+        //self.TextDisplayView.addSubview(audioView)
+        self.view.addSubview(audioView)
+
+        audioView.layer.cornerRadius = 15
+        playPauseImage.layer.cornerRadius = 15
+        //playPauseImage.layer.borderColor =
+        playPauseImage.layer.borderWidth = 1
+        audioView.translatesAutoresizingMaskIntoConstraints = false
+
+        audioView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 600).isActive = true
+        audioView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16).isActive = true
+        audioView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16).isActive = true
+        audioView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+
+//        audioView.widthAnchor.constraint(equalToConstant: 249).isActive = true
+//        audioView.heightAnchor.constraint(equalToConstant: 90).isActive = true
+
+        audioView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+    }
     
+    //REVISA SI PUEDES DARTE CUENTA SI LA MUSICA PARO PARA DEJAR DE AGREGAR 1 A PROGRESS BAR
     @objc func progressBarTimer() {
         
-        if CoritosViewController.launchBefore == 1 {
+//        if CoritosViewController.launchBefore == false {
+//
+//        }
+        
+        //apiHimnoSelection()
+        
+        if CoritosViewController.progressBarProgress == 1.0 {
+            
+            CoritosViewController.progressBarProgress = 0.0
+            CoritosViewController.progressBarCount = 0
+            playPauseImage.setImage(#imageLiteral(resourceName: "play-button-svgrepo-com-1"), for: .normal)
+            coritoRate = 0.0
+            CoritosViewController.launchBefore = false
+            audioPlayerView()
+            CoritosViewController.timer.invalidate()
+        }
+            
+        else {
+            
+            CoritosViewController.progressBarProgress = Float(CoritosViewController.progressBarCount) / Float(CoritosViewController.trackDuration)
+            print(playerBar.progress)
+            print(CoritosViewController.progressBarCount)
+            CoritosViewController.progressBarCount += 1
             
         }
         
-        apiHimnoSelection()
-            
-        
-        playerBar.progress = Float(progressBarCount) / Float(data.trackDuration)
-        
+        playerBar.progress = CoritosViewController.progressBarProgress
         //guarda esta variable y cuando alguien le quiera reproducir otro himno la setea a 0 en el boton repoducir
-        progressBarCount += 1
-        print(playerBar.progress)
-        print(progressBarCount)
+        
     }
     
     func apiHimnoSelection() {
@@ -217,6 +261,8 @@ class CoritosViewController: UIViewController {
             
             
             data.performRequest(apiURL: "https://dn2.monophonic.digital/v1/playlists/\(playlist1)/tracks?app_name=HimnarioViejo")
+            
+            coritos.coritos[indexCorito].himnoUrl = "https://discoveryprovider.audius7.prod-us-west-2.staked.cloud/v1/tracks/\(data.trackName)/stream?app_name=HimnarioViejo"
         }
         
         else if indexCorito > 200 && indexCorito <= 400 {
@@ -252,7 +298,7 @@ class CoritosViewController: UIViewController {
     func loadCorito() {
         apiHimnoSelection()
         
-        textDisplay.text = coritosDisplay[indexCorito].himnos
+        textDisplay.text = coritosDisplay[indexCorito].himnos + "\n"
         coritoTitle.title = "#" + coritosDisplay[indexCorito].title
         
         favoritosDictionary = defaults.dictionary(forKey: "Favoritos") as? [String : [Int]] ?? ["Nuevo" : [], "Viejo" : []]
@@ -280,22 +326,51 @@ class CoritosViewController: UIViewController {
         super.viewDidLoad()
         
         loadCorito()
-        //audioPlayerView()
+        audioPlayerView()
+        
+//        var i = 0
+//        while i <= coritos.coritos.count {
+//
+//            coritos.coritos[i].himnoUrl = "https://discoveryprovider.audius7.prod-us-west-2.staked.cloud/v1/tracks/\(data.trackName)/stream?app_name=HimnarioViejo"
+//            i += 1
+//        }
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         apiHimnoSelection()
         
-        if CoritosViewController.launchBefore == 2 && CoritosViewController.audioPlayer!.rate > 0.0 {
+        PlayerTimer.text = CoritosViewController.trackTime
+        
+        if CoritosViewController.progressBarCount > 0 {
             
-            playPauseImage.setImage(#imageLiteral(resourceName: "pause-svgrepo-com-1"), for: .normal)
+            playerBar.progress = CoritosViewController.progressBarProgress
+            
+            //check if the music is playing and if it is start the timer because I only can start the timer if the music is playing
+            if CoritosViewController.audioPlayer!.timeControlStatus == AVPlayer.TimeControlStatus.playing {
+                CoritosViewController.timer.invalidate()
+                
+                playPauseImage.setImage(#imageLiteral(resourceName: "pause-svgrepo-com-1"), for: .normal)
+                
+                CoritosViewController.timer = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(progressBarTimer), userInfo: nil, repeats: true)
+            }
+            
+            
         }
         
-        else if CoritosViewController.launchBefore == 2 {
-            
-            playPauseImage.setImage(#imageLiteral(resourceName: "play-button-svgrepo-com-1"), for: .normal)
-        }
+//        if CoritosViewController.audioPlayer?.rate == 0.0 {
+//            timer = Timer.scheduledTimer(timeInterval: TimeInterval(1), target: self, selector: #selector(progressBarTimer), userInfo: nil, repeats: true)
+//        }
+        
+//        if CoritosViewController.launchBefore == 2 && CoritosViewController.audioPlayer!.rate > 0.0 {
+//
+//            playPauseImage.setImage(#imageLiteral(resourceName: "pause-svgrepo-com-1"), for: .normal)
+//        }
+//
+//        else if CoritosViewController.launchBefore == 2 {
+//
+//            playPauseImage.setImage(#imageLiteral(resourceName: "play-button-svgrepo-com-1"), for: .normal)
+//        }
         
         if defaults.bool(forKey: "DarkMode") !=  true{
             
@@ -312,15 +387,17 @@ class CoritosViewController: UIViewController {
         }
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//
+    override func viewWillDisappear(_ animated: Bool) {
+
+        //timer.invalidate()
+        //timer.invalidate()
 //        if coritoRate == 1.0 {
 //            audioPlayer!.pause()
 //
 //            reproducirItem.title = "Reproducir"
 //            coritoRate = 0.0
-//        }
-//    }
+        }
+    //}
     
     @IBAction func playPauseAction(_ sender: UIButton) {
         
@@ -374,7 +451,7 @@ class CoritosViewController: UIViewController {
             }
             
         }
-        //audioPlayerView()
+        audioPlayerView()
     }
 }
     
@@ -458,11 +535,13 @@ extension CoritosViewController: UITabBarDelegate {
         //Make an option so people can chose to play instrumental or play also the voice and if the himno is already playing and you move to another himno you can chose to play that other himno
         else if(item.tag == 3) {
             
-//            isChangeHimnoName = true
-//            CoritosViewController.launchBefore = 1
+            CoritosViewController.timer.invalidate()
+            CoritosViewController.progressBarCount = 0
+            coritoRate = 0.0
+            playerBar.progress = 0.0
+            CoritosViewController.launchBefore = false
             audioReproduction()
-//            audioPlayerView()
-//            progressBarCount = 0
+            audioPlayerView()
             
         }
         

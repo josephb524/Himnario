@@ -14,7 +14,7 @@ class FavoritosViewController: UIViewController {
     @IBOutlet weak var favoritosTableView: UITableView!
     @IBOutlet weak var favoritosTextView: UITableView!
     
-    let coritos = HimnarioNuevoBrain()
+    var coritos = HimnarioNuevoBrain()
     let coritosViejos = HimnarioViejoBrain()
     var index: Int = 0
 
@@ -58,35 +58,59 @@ class FavoritosViewController: UIViewController {
         self.favoritosTableView.reloadData()
     }
     
-    
+    //crea codigo que si hay un himno con el numero equivocado lo borras
+    //TAMBIEN INTENTA SORT DE ARRAY BY DATE
     func coritosFavoritos() {
+        
+        var himnoVersion = "Nuevo"
         
         favoritosLength = defaults.dictionary(forKey: "Favoritos") as? [String : [Int]] ?? ["Nuevo" : [], "Viejo" : []]
         
         
-        if favoritosLength["Nuevo"]!.count != 0 {
+        if favoritosLength[himnoVersion]!.count != 0 {
             
             var i = 0
             
-            while i < favoritosLength["Nuevo"]!.count {
+            while i < favoritosLength[himnoVersion]!.count {
                 
-                favoritosArray.append(Himnos(title: coritos.coritos[favoritosLength["Nuevo"]![i]].title, himnos: coritos.coritos[favoritosLength["Nuevo"]![i]].himnos, himnoUrl: coritos.coritos[favoritosLength["Nuevo"]![i]].himnoUrl))
+                if himnoVersion == "Nuevo" {
+                    
+                    coritos.coritos[i].himnoUrl = "https://discoveryprovider.audius7.prod-us-west-2.staked.cloud/v1/tracks/\(data.trackName)/stream?app_name=HimnarioViejo"
+                    
+                    favoritosArray.append(Himnos(title: coritos.coritos[favoritosLength[himnoVersion]![i]].title, himnos: coritos.coritos[favoritosLength[himnoVersion]![i]].himnos, himnoUrl: coritos.coritos[favoritosLength[himnoVersion]![i]].himnoUrl))
+                    
+                }
+                
+                else if himnoVersion == "Viejo" {
+                    
+                    favoritosArray.append(Himnos(title: coritosViejos.antiguo[favoritosLength[himnoVersion]![i]].title, himnos: coritosViejos.antiguo[favoritosLength[himnoVersion]![i]].himnos, himnoUrl: coritosViejos.antiguo[favoritosLength[himnoVersion]![i]].himnoUrl))
+                    
+                }
                 
                 i += 1
+                
+                if i == favoritosLength[himnoVersion]!.count && himnoVersion == "Nuevo" {
+                    
+                    i = 0
+                    
+                    himnoVersion = "Viejo"
+                }
+                
             }
+        
         }
         
-        if favoritosLength["Viejo"]!.count != 0 {
-            
-            var i = 0
-            
-            while i < favoritosLength["Viejo"]!.count {
-                
-                favoritosArray.append(Himnos(title: coritosViejos.antiguo[favoritosLength["Viejo"]![i]].title, himnos: coritosViejos.antiguo[favoritosLength["Viejo"]![i]].himnos, himnoUrl: coritosViejos.antiguo[favoritosLength["Viejo"]![i]].himnoUrl))
-                
-                i += 1
-            }
-        }
+//        if favoritosLength["Viejo"]!.count != 0 {
+//
+//            var i = 0
+//
+//            while i < favoritosLength["Viejo"]!.count {
+//
+//                favoritosArray.append(Himnos(title: coritosViejos.antiguo[favoritosLength["Viejo"]![i]].title, himnos: coritosViejos.antiguo[favoritosLength["Viejo"]![i]].himnos, himnoUrl: coritosViejos.antiguo[favoritosLength["Viejo"]![i]].himnoUrl))
+//
+//                i += 1
+//            }
+//        }
     }
 }
 

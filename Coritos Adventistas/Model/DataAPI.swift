@@ -18,5 +18,6 @@ struct Data1: Decodable {
 
     let duration: Int
     let title: String
+    let id: String
     
 }

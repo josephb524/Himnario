@@ -39,6 +39,7 @@ class HimnarioNuevoViewController: UIViewController {
         searchBar.delegate = self
         //tabBar.delegate = self
         
+        
         self.addDoneButtonOnKeyboard()
     }
     
@@ -47,6 +48,7 @@ class HimnarioNuevoViewController: UIViewController {
         overrideUserInterfaceStyle = .light
         tabBarController!.tabBar.barTintColor = UIColor.white
         selectTableView.backgroundColor = UIColor.white
+        
         
         if defaults.bool(forKey: "DarkMode") !=  true{
             

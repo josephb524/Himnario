@@ -12,7 +12,7 @@ struct Himnos {
     
     let title: String
     let himnos: String
-    let himnoUrl: String
+    var himnoUrl: String
 }
 
 

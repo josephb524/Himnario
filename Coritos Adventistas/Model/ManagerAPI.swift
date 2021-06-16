@@ -6,12 +6,13 @@
 //  Copyright © 2021 Jose Pimentel. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class ManagerAPI {
     
     var trackTime: String = ""
     var trackDuration = 0
+    var trackName: String = ""
     let apiURL = "https://dn2.monophonic.digital/v1/tracks/XO2wy?app_name=himnarioViejo"
     
     
@@ -56,10 +57,11 @@ class ManagerAPI {
             //print(decoderData.data[1].duration)
             
             //print(String(format:"%02i:%02i", minutes, seconds))
-            print(decoderData.data[CoritosViewController.indexCoritoApi].title)
+            //print(decoderData.data[CoritosViewController.indexCoritoApi].title)
             
             trackTime = String(format:"%02i:%02i", minutes, seconds)
             //print(trackTime)
+            trackName = decoderData.data[CoritosViewController.indexCoritoApi].id
             trackDuration = decoderData.data[CoritosViewController.indexCoritoApi].duration
             
         } catch {
